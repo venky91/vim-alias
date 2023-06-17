@@ -1,0 +1,16 @@
+alias gs="git status"
+alias gb="git branch"
+alias gco="git checkout"
+alias gd="git diff"
+alias glg="git log --stat"
+alias gpr="git pull --rebase"
+
+ggp () {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]
+  then
+    git push origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git push origin "${b:=$1}"
+  fi
+}
